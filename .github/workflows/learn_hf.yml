@@ -12,7 +12,7 @@ jobs:
           python-version: '3.10' # 3.10 o 3.11 son las más estables para torch
       - name: Install dependencies
         run: |
-          pip install transformers torch datasets
+          pip install transformers torch sentencepiece sacremoses
       - name: Run NLP Script
-        run: python clase4_nlp.py
+        run: python clase5_seq2seq.py
 
