@@ -1,0 +1,18 @@
+name: Hugging Face Class 4
+on: [push]
+
+jobs:
+  run-transformers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10' # 3.10 o 3.11 son las más estables para torch
+      - name: Install dependencies
+        run: |
+          pip install transformers torch datasets
+      - name: Run NLP Script
+        run: python clase4_nlp.py
+
