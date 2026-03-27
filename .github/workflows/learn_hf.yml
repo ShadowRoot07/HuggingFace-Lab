@@ -14,5 +14,4 @@ jobs:
         run: |
           pip install transformers torch sentencepiece sacremoses
       - name: Run NLP Script
-        run: python clase5_seq2seq.py
-
+        run: python clase5_seq2seq.py && python clase6_tokenizer.py

@@ -1,20 +1,20 @@
 from transformers import pipeline
 
-# 1. Pipeline de Traducción (Corregido)
-# Cambiamos "translation_en_to_es" por "translation"
-translator = pipeline("translation", model="Helsinki-NLP/opus-mt-en-es")
+# 1. Pipeline de Traducción (Versión Universal)
+# Usamos 'text2text-generation' que es compatible con modelos MT (Machine Translation)
+translator = pipeline("text2text-generation", model="Helsinki-NLP/opus-mt-en-es")
 
-# 2. Pipeline de Resumen (Este estaba bien, pero lo mantenemos)
+# 2. Pipeline de Resumen (También es una tarea de texto a texto)
 summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")
 
 # --- PRUEBA DE TRADUCCIÓN ---
 texto_ingles = "Artificial Intelligence is transforming the world. Learning it from a mobile device using Termux is a superpower."
+# Al usar text2text-generation, el resultado se encuentra en 'generated_text'
 traduccion = translator(texto_ingles)
 
 print("\n--- TRADUCCIÓN ---")
 print(f"Original: {texto_ingles}")
-# El resultado de 'translation' a veces viene en una lista diferente, así es más seguro:
-print(f"Español: {traduccion[0]['translation_text']}")
+print(f"Español: {traduccion[0]['generated_text']}")
 
 # --- PRUEBA DE RESUMEN ---
 texto_largo = """
